@@ -1,9 +1,13 @@
 export const state = () => ({
-  sidebar: false
+  sidebar: true,
+  miniVariant: false
 })
 
 export const mutations = {
-  toggleSidebar (state) {
-    state.sidebar = !state.sidebar
+  setSidebar: (state, value) => {
+    state.sidebar = value
+  },
+  setminiVariant: (state, value) => {
+    state.miniVariant = value
   }
 }

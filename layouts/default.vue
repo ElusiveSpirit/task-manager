@@ -2,7 +2,7 @@
   <v-app>
     <v-navigation-drawer
       :mini-variant.sync="miniVariant"
-      v-model="drawer"
+      v-model="sidebar"
       fixed
       app
       color="primary"
@@ -26,7 +26,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar fixed app dark>
-      <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click="sidebar = !sidebar"></v-toolbar-side-icon>
       <v-btn
         icon
         @click.stop="miniVariant = !miniVariant"
@@ -45,15 +45,31 @@
 
 <script>
   export default {
-    data () {
-      return {
-        drawer: true,
-        items: [
-          { icon: 'apps', title: 'Главная', to: '/' }
-          // { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
-        ],
-        miniVariant: false,
-        title: 'Balanced Business'
+    data: () => ({
+      drawer: true,
+      items: [
+        { icon: 'apps', title: 'Главная', to: '/' }
+        // { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
+      ],
+      miniVariant: false,
+      title: 'Balanced Business'
+    }),
+    computed: {
+      sidebar: {
+        set (v) {
+          this.$store.commit('setSidebar', v)
+        },
+        get () {
+          return this.$store.state.sidebar
+        }
+      },
+      miniVariant: {
+        set (v) {
+          this.$store.commit('miniVariant', v)
+        },
+        get () {
+          return this.$store.state.miniVariant
+        }
       }
     }
   }
