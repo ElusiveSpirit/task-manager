@@ -7,7 +7,7 @@ export const mutations = {
   setSidebar: (state, value) => {
     state.sidebar = value
   },
-  setminiVariant: (state, value) => {
+  setMiniVariant: (state, value) => {
     state.miniVariant = value
   }
 }

@@ -1666,7 +1666,7 @@ deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
-deepmerge@^2.0.0:
+deepmerge@^2.0.0, deepmerge@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.1.1.tgz#e862b4e45ea0555072bf51e7fd0d9845170ae768"
 
@@ -3710,7 +3710,7 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-nuxt@^1.0.0:
+nuxt@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-1.4.2.tgz#54165be580374b8392ed1150f758e37ab3f7c61d"
   dependencies:
@@ -5190,6 +5190,10 @@ shell-quote@^1.6.1:
     array-reduce "~0.0.0"
     jsonify "~0.0.0"
 
+shvl@^1.3.0:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/shvl/-/shvl-1.3.1.tgz#6c20a17b4a20b08e9f8cab60c50a92229fcc176e"
+
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
@@ -5885,9 +5889,20 @@ vue@^2.5.17:
   version "2.5.17"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
 
-vuetify@^1.0.0:
+vuetify@^1.1.14:
   version "1.1.14"
   resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.1.14.tgz#a45b6cd659e31edc8ca8dd2094562f1763f1f223"
+
+vuex-persistedstate@^2.5.4:
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/vuex-persistedstate/-/vuex-persistedstate-2.5.4.tgz#a19710ad7f9a08cea4e65fc585924d9fdac7384a"
+  dependencies:
+    deepmerge "^2.1.0"
+    shvl "^1.3.0"
+
+vuex-shared-mutations@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/vuex-shared-mutations/-/vuex-shared-mutations-0.0.4.tgz#7d884e8a907fbe5594afb68f426129d1bf5eebc5"
 
 vuex@^3.0.1:
   version "3.0.1"

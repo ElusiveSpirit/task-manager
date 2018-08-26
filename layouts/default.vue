@@ -7,7 +7,17 @@
       app
       color="primary"
       dark
+      :clipped="false"
     >
+      <v-toolbar>
+        <v-avatar
+          :size="46"
+          color="grey lighten-4"
+        >
+          <img src="~/assets/images/no-avatar.png" alt="avatar">
+        </v-avatar>
+        <v-toolbar-title>{{ email }}</v-toolbar-title>
+      </v-toolbar>
       <v-list dark>
         <v-list-tile
           router
@@ -34,9 +44,21 @@
         <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
       </v-btn>
       <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-menu offset-y>
+        <v-btn slot="activator" icon>
+          <v-icon>more_vert</v-icon>
+        </v-btn>
+        <v-list>
+          <v-list-tile
+            @click="logout"
+          ><v-list-tile-title>Выйти</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
     </v-toolbar>
     <v-content>
-      <v-container>
+      <v-container fill-height>
         <nuxt />
       </v-container>
     </v-content>
@@ -44,14 +66,15 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   export default {
+    middleware: 'authenticated',
     data: () => ({
-      drawer: true,
       items: [
         { icon: 'apps', title: 'Главная', to: '/' }
         // { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
       ],
-      miniVariant: false,
       title: 'Balanced Business'
     }),
     computed: {
@@ -65,10 +88,26 @@
       },
       miniVariant: {
         set (v) {
-          this.$store.commit('miniVariant', v)
+          this.$store.commit('setMiniVariant', v)
         },
         get () {
           return this.$store.state.miniVariant
+        }
+      },
+      ...mapState({
+        email: state => state.user.email
+      })
+    },
+    methods: {
+      async logout () {
+        await this.$store.dispatch('user/logout')
+      }
+    },
+    watch: {
+      '$store.state.user.id' (val) {
+        // Go to login page when user logged out
+        if (!val) {
+          this.$router.push({ name: 'login' })
         }
       }
     }

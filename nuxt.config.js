@@ -17,7 +17,12 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
   },
-  plugins: ['~/plugins/vuetify.js'],
+  mode: 'spa',
+  plugins: [
+    '~/plugins/vuetify.js',
+    '~/plugins/vue-persisted-state.js',
+    '~/plugins/vue-shared-mutations.js'
+  ],
   css: [
     '~/assets/style/app.styl'
   ],
