@@ -9,7 +9,7 @@
       dark
       :clipped="false"
     >
-      <v-toolbar>
+      <v-toolbar @click.native="$router.push({ name: 'profile' })" class="profile-toolbar">
         <v-avatar
           :size="46"
           color="grey lighten-4"
@@ -50,6 +50,9 @@
           <v-icon>more_vert</v-icon>
         </v-btn>
         <v-list>
+          <v-list-tile :to="{ name: 'settings' }" nuxt
+          ><v-list-tile-title>Настройки</v-list-tile-title>
+          </v-list-tile>
           <v-list-tile
             @click="logout"
           ><v-list-tile-title>Выйти</v-list-tile-title>
@@ -58,7 +61,7 @@
       </v-menu>
     </v-toolbar>
     <v-content>
-      <v-container fill-height>
+      <v-container fill-height class="pa-0">
         <nuxt />
       </v-container>
     </v-content>
@@ -72,8 +75,8 @@
     middleware: 'authenticated',
     data: () => ({
       items: [
-        { icon: 'apps', title: 'Главная', to: '/' }
-        // { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
+        { icon: 'apps', title: 'Главная', to: { name: 'index' } },
+        { icon: 'check', title: 'Задачи', to: { name: 'tasks' } }
       ],
       title: 'Balanced Business'
     }),
@@ -113,3 +116,8 @@
     }
   }
 </script>
+
+<style lang="sass" scoped>
+  .profile-toolbar
+    cursor: pointer
+</style>
