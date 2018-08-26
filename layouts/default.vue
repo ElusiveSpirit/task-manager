@@ -76,7 +76,8 @@
     data: () => ({
       items: [
         { icon: 'apps', title: 'Главная', to: { name: 'index' } },
-        { icon: 'check', title: 'Задачи', to: { name: 'tasks' } }
+        { icon: 'check', title: 'Задачи', to: { name: 'tasks' } },
+        { icon: 'people', title: 'Сотрудники', to: { name: 'employees' } }
       ],
       title: 'Balanced Business'
     }),
