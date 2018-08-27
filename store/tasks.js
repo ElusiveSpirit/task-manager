@@ -65,16 +65,19 @@ export const state = () => ({
 
 export const getters = {
   financeTasks: (state) => {
-    return (state.list || []).filter(task => task.type === TYPE_FINANCE)
+    return state.list.filter(task => task.type === TYPE_FINANCE)
   },
   clientsTasks: (state) => {
-    return (state.list || []).filter(task => task.type === TYPE_CLIENTS)
+    return state.list.filter(task => task.type === TYPE_CLIENTS)
   },
   processTasks: (state) => {
-    return (state.list || []).filter(task => task.type === TYPE_PROCESS)
+    return state.list.filter(task => task.type === TYPE_PROCESS)
   },
   teamTasks: (state) => {
-    return (state.list || []).filter(task => task.type === TYPE_TEAM)
+    return state.list.filter(task => task.type === TYPE_TEAM)
+  },
+  byId: (state) => (id) => {
+    return state.list.find(task => task.id === id)
   }
 }
 
@@ -95,5 +98,8 @@ export const actions = {
   fetchAll: async ({ commit, store }) => {
     // const data = []
     // commit('setTasks', data)
+  },
+  fetchTask: async ({ getters }, { id }) => {
+    return getters.byId(id)
   }
 }

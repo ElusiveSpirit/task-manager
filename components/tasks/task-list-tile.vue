@@ -1,11 +1,12 @@
 <template>
   <v-list-tile
     avatar
-    @click=""
+    :to="{ name: 'tasks-id', params: { id: id } }"
   >
     <v-list-tile-avatar>
-          <img v-if="assigned.avatar" :src="assigned.avatar">
-          <img v-else src="~/assets/images/no-avatar.png">
+      <v-icon v-if="!assigned.name">person_add</v-icon>
+      <img v-else-if="assigned.avatar" :src="assigned.avatar">
+      <img v-else src="~/assets/images/no-avatar.png">
     </v-list-tile-avatar>
     <v-list-tile-content>
       <v-list-tile-title>{{ name }}</v-list-tile-title>

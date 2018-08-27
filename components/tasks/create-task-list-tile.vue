@@ -4,9 +4,8 @@
     @click.native="enterEditMode"
     color="gray"
   >
-    <v-list-tile-avatar>
-      <v-icon v-if="editMode" @click.native.stop="addTask">check</v-icon>
-      <v-icon v-else>add</v-icon>
+    <v-list-tile-avatar v-if="!editMode" class="active-field">
+      <v-icon>add</v-icon>
     </v-list-tile-avatar>
     <v-list-tile-content>
       <v-list-tile-action-text v-if="editMode">
@@ -21,6 +20,9 @@
         Добавить задачу
       </v-list-tile-title>
     </v-list-tile-content>
+    <v-list-tile-avatar v-if="editMode" @click.native.stop="addTask" class="enter-btn">
+      <v-icon>subdirectory_arrow_left</v-icon>
+    </v-list-tile-avatar>
   </v-list-tile>
 </template>
 
@@ -56,6 +58,7 @@
           type: this.taskType,
           name: this.taskName
         })
+        this.taskName = ''
         this.editMode = false
       }
     }
@@ -68,4 +71,7 @@
 
   .v-list__tile__action-text
     width: 100%
+  
+  .enter-btn, .active-field
+    cursor: pointer
 </style>
