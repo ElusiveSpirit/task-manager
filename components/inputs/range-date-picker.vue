@@ -1,8 +1,9 @@
 <template>
   <v-picker
-    v-if="editable"
+    v-if="!disabled"
     mode="range"
     :value="value"
+    @input="saveInput"
     is-double-paned
     popover-align="right"
   >

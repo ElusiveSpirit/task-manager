@@ -68,7 +68,7 @@
       </v-menu>
     </v-toolbar>
     <v-content>
-      <v-container fill-height class="pa-0">
+      <v-container fluid fill-height class="pa-0">
         <nuxt />
       </v-container>
     </v-content>

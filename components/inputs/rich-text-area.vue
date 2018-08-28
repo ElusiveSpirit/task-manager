@@ -26,20 +26,20 @@
     },
     methods: {
       updateEditorEnabled () {
-        const isEnabled = this.editable && !this.loading
+        const isEnabled = !this.disabled && !this.loading
         this.editor.enable(isEnabled)
       },
       saveInput ({ html }) {
         this.$emit('input', html)
       },
       setActive (value) {
-        if (this.editable) {
+        if (!this.disabled) {
           this.editorActive = value
         }
       }
     },
     watch: {
-      editable () { this.updateEditorEnabled() },
+      disabled () { this.updateEditorEnabled() },
       loading () { this.updateEditorEnabled() }
     }
   }

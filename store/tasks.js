@@ -24,6 +24,7 @@ export const state = () => ({
     {
       id: '6',
       name: 'Задача 1',
+      description: '<h3>Описание задачи №1</h3>',
       type: TYPE_FINANCE,
       metric: '',
       dateStart: new Date(),
@@ -37,6 +38,7 @@ export const state = () => ({
     {
       id: '2',
       name: 'Задача 2',
+      description: '<h3>Описание задачи №2</h3>',
       type: TYPE_FINANCE,
       metric: '',
       dateStart: new Date(),
@@ -50,6 +52,7 @@ export const state = () => ({
     {
       id: '3',
       name: 'Задача 1',
+      description: '<h3>Описание задачи №3</h3>',
       type: TYPE_CLIENTS,
       metric: '',
       dateStart: new Date(),

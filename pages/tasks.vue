@@ -1,28 +1,40 @@
 <template>
-  <v-layout justify-center>
-    <v-flex xs12 sm10 md8>
-      <v-card>
-        <v-list
-          v-for="(type, index) of tasksTypes"
-          two-line
-          subheader
-        >
-          <v-subheader>{{ type.name }}</v-subheader>
-          <create-task-list-tile
-            :taskType="type.type"
-          ></create-task-list-tile>
-          <task-list-tile
-            v-for="task in type.list"
-            :key="task.id"
-            :id="task.id"
-            :name="task.name"
-            :assigned="task.assigned"
-            :status="task.status"
-          ></task-list-tile>
+  <v-layout wrap justify-center>
+    <v-flex v-show="showTaskList" sm12 md6>
+      <v-container fluid fill-height class="container-mobile-flat">
+        <v-layout fill-height>
+            <v-card class="container-max-width">
+              <v-list
+                v-for="(type, index) of tasksTypes"
+                :key="index"
+                two-line
+                subheader
+              >
+                <v-subheader>{{ type.name }}</v-subheader>
+                <create-task-list-tile
+                  :taskType="type.type"
+                ></create-task-list-tile>
+                <task-list-tile
+                  v-for="task in type.list"
+                  :key="task.id"
+                  :id="task.id"
+                  :name="task.name"
+                  :assigned="task.assigned"
+                  :status="task.status"
+                ></task-list-tile>
 
-          <v-divider v-if="index !== tasksTypes.length - 1"></v-divider>
-        </v-list>
-      </v-card>
+                <v-divider v-if="index !== tasksTypes.length - 1"></v-divider>
+              </v-list>
+            </v-card>
+        </v-layout>
+      </v-container>
+    </v-flex>
+    <v-flex v-show="showDetailTask" sm12 md6>
+      <v-container fluid fill-height class="container-mobile-flat">
+        <v-layout fill-height>
+          <nuxt-child :key="$route.params.id" class="container-max-width" />
+        </v-layout>
+      </v-container>
     </v-flex>
   </v-layout>
 </template>
@@ -42,6 +54,12 @@
       CreateTaskListTile
     },
     computed: {
+      showTaskList () {
+        return this.$route.name === 'tasks' || this.$vuetify.breakpoint.mdAndUp
+      },
+      showDetailTask () {
+        return this.$route.name !== 'tasks' || this.$vuetify.breakpoint.mdAndUp
+      },
       tasksTypes () {
         return [
           {
@@ -78,7 +96,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>
