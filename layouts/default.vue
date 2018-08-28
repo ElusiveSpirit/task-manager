@@ -5,20 +5,33 @@
       v-model="sidebar"
       fixed
       app
-      color="primary"
       dark
+      hide-overlay
       :clipped="false"
     >
-      <v-toolbar @click.native="$router.push({ name: 'profile' })" class="profile-toolbar">
-        <v-avatar
-          :size="46"
-          color="grey lighten-4"
-        >
-          <img src="~/assets/images/no-avatar.png" alt="avatar">
-        </v-avatar>
-        <v-toolbar-title>{{ email }}</v-toolbar-title>
+      <v-toolbar @click.native="$router.push({ name: 'profile' })" flat class="profile-toolbar">
+        <v-list class="pa-0">
+          <v-list-tile avatar>
+            <v-list-tile-avatar>
+              <img src="~/assets/images/no-avatar.png" alt="avatar">
+            </v-list-tile-avatar>
+
+            <v-list-tile-content>
+              <v-list-tile-title>{{ email }}</v-list-tile-title>
+            </v-list-tile-content>
+
+            <v-list-tile-action>
+              <v-btn
+                icon
+                @click.stop="miniVariant = !miniVariant"
+              >
+                <v-icon>chevron_left</v-icon>
+              </v-btn>
+            </v-list-tile-action>
+          </v-list-tile>
+        </v-list>
       </v-toolbar>
-      <v-list dark>
+      <v-list dark dense>
         <v-list-tile
           router
           :to="item.to"
@@ -37,12 +50,6 @@
     </v-navigation-drawer>
     <v-toolbar fixed app dark>
       <v-toolbar-side-icon @click="sidebar = !sidebar"></v-toolbar-side-icon>
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-menu offset-y>
