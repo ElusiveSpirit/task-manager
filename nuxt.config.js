@@ -21,7 +21,9 @@ module.exports = {
   plugins: [
     '~/plugins/vuetify.js',
     '~/plugins/vue-persisted-state.js',
-    '~/plugins/vue-shared-mutations.js'
+    '~/plugins/vue-shared-mutations.js',
+    '~/plugins/vue-moment.js',
+    '~/plugins/vue-quill.js'
   ],
   css: [
     '~/assets/style/app.styl'
