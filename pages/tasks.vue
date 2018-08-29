@@ -21,6 +21,7 @@
                   :name="task.name"
                   :assigned="task.assigned"
                   :status="task.status"
+                  :class="{ active: openedTaskId === task.id }"
                 ></task-list-tile>
 
                 <v-divider v-if="index !== tasksTypes.length - 1"></v-divider>
@@ -59,6 +60,9 @@
       },
       showDetailTask () {
         return this.$route.name !== 'tasks' || this.$vuetify.breakpoint.mdAndUp
+      },
+      openedTaskId () {
+        return this.$route.params.id || -1
       },
       tasksTypes () {
         return [

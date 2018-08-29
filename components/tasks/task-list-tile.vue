@@ -1,7 +1,8 @@
 <template>
   <v-list-tile
     avatar
-    :to="{ name: 'tasks-id', params: { id: id } }"
+    :to="{ name: 'tasks-id', params: { id } }"
+    class="task-list-tile"
   >
     <v-list-tile-avatar>
       <v-icon v-if="!assigned.name">person_add</v-icon>
@@ -42,3 +43,10 @@
     }
   }
 </script>
+
+<style lang="sass">
+  .task-list-tile
+    &.active
+      .v-list__tile--link
+        background: rgba(0, 0, 0, .04)
+</style>
