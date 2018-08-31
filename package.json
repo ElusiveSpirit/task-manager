@@ -11,6 +11,10 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@babel/preset-stage-2": "^7.0.0",
+    "@vuex-orm/core": "^0.26.1",
+    "@vuex-orm/plugin-graphql": "^1.0.0-rc.15",
+    "babel-preset-stage-2": "^6.24.1",
     "node-sass": "^4.9.3",
     "nuxt": "^1.4.2",
     "sass-loader": "^7.1.0",

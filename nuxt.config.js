@@ -23,7 +23,8 @@ module.exports = {
     '~/plugins/vue-persisted-state.js',
     '~/plugins/vue-shared-mutations.js',
     '~/plugins/vue-moment.js',
-    '~/plugins/vue-quill.js'
+    '~/plugins/vue-quill.js',
+    '~/plugins/vuex-orm.js'
   ],
   css: [
     '~/assets/style/app.styl'
@@ -37,6 +38,7 @@ module.exports = {
   */
   build: {
     babel: {
+      presets: ['env', 'vue-app', 'stage-2'],
       plugins: [
         ['transform-imports', {
           'vuetify': {
