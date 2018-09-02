@@ -1,13 +1,11 @@
 import VuexORM from '@vuex-orm/core'
 // import VuexORMGraphQL from '@vuex-orm/plugin-graphql'
 
-import {
-  User,
-  Email,
-  Profile,
-  Account,
-  Task
-} from '~/models'
+import User from '~/models/User'
+import Email from '~/models/Email'
+import Profile from '~/models/Profile'
+import Account from '~/models/Account'
+import Task from '~/models/Task'
 
 export const database = new VuexORM.Database()
 
