@@ -4,22 +4,39 @@
       <v-card class="elevation-12">
         <v-toolbar dark color="primary">
           <v-toolbar-title>Signup form</v-toolbar-title>
-          <v-tooltip right>
-            <v-btn slot="activator" icon large href="https://codepen.io/johnjleider/pen/wyYVVj" target="_blank">
-              <v-icon large>mdi-codepen</v-icon>
-            </v-btn>
-            <span>Codepen</span>
-          </v-tooltip>
         </v-toolbar>
         <v-card-text>
-          <v-form>
-            <v-text-field v-model="email" prepend-icon="email" name="email" label="Email" type="email"></v-text-field>
-            <v-text-field v-model="password" id="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
+          <v-form ref="form" class="data" v-model="valid" lazy-validation>
+            <v-text-field
+              v-model="email"
+              prepend-icon="email"
+              name="email"
+              label="Email"
+              type="email"
+            ></v-text-field>
+            <v-text-field
+              v-model="password"
+              id="password"
+              prepend-icon="lock"
+              name="password"
+              label="Password"
+              type="password"
+              :rules="[checkPassword]"
+            ></v-text-field>
+            <v-text-field
+              v-model="repeatPassword"
+              id="repeatPassword"
+              prepend-icon="lock"
+              name="repeatPassword"
+              label="Repeat Password"
+              type="password"
+              :rules="[checkPassword]"
+            ></v-text-field>
           </v-form>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn @click.native="authenticate" color="primary">Login</v-btn>
+          <v-btn @click.native="authenticate" color="primary">Signup</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>
@@ -33,21 +50,26 @@
     layout: 'public',
     data: () => ({
       email: '',
-      password: ''
+      password: '',
+      repeatPassword: '',
+      valid: true
     }),
+    computed: {
+      checkPassword () {
+        return (this.password === this.repeatPassword && !!this.password) || 'Пароли не совпадают'
+      }
+    },
     methods: {
       async authenticate () {
-        try {
-          let answer = await this.login({ email: this.email, password: this.password })
+        if (this.$refs.form.validate()) {
+          let answer = await this.signup({email: this.email, password: this.password})
           if (answer) {
-            this.$router.push({ name: 'index' })
+            this.$router.push({name: 'index'})
           }
-        } catch (e) {
-          console.log(e)
         }
       },
       ...mapActions({
-        login: 'user/authenticate'
+        signup: 'user/signup'
       })
     }
   }

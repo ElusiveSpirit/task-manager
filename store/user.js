@@ -37,6 +37,20 @@ export const actions = {
     }
     return false
   },
+  async signup ({ commit }, { email, password }) {
+    const data = await this.$axios.$post(BASE_URL + 'user/signup/', {
+      email: email,
+      password: password
+    })
+    if (data) {
+      let tokenData = JSON.parse(atob(data.refresh.split('.')[1]))
+      data.email = email
+      data.id = tokenData.user_id
+      commit('setUser', data)
+      return true
+    }
+    return false
+  },
   async refresh ({ state, commit }) {
     const data = await this.$axios.$post(BASE_URL + 'token/', {
       refresh: state.refreshToken
