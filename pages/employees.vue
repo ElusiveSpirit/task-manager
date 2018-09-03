@@ -1,32 +1,60 @@
 <template>
-  <v-list subheader>
-    <v-subheader>Recent chat</v-subheader>
-    <v-list-tile
-      v-for="profile in profiles"
-      :key="profile.title"
-      avatar
-      @click=""
-    >
-      <v-list-tile-avatar>
-        <img :src="profile.avatar">
-      </v-list-tile-avatar>
-
-      <v-list-tile-content>
-        <v-list-tile-title v-html="profile.title"></v-list-tile-title>
-      </v-list-tile-content>
-
-      <v-list-tile-action>
-        <v-icon :color="profile.active ? 'teal' : 'grey'">chat_bubble</v-icon>
-      </v-list-tile-action>
-    </v-list-tile>
-  </v-list>
+  <v-layout wrap justify-center>
+    <v-flex v-show="showEmployeesList" sm12 md6>
+      <v-container fluid fill-height class="container-mobile-flat">
+        <v-layout fill-height>
+          <v-card class="container-max-width">
+            <v-list subheader>
+              <v-subheader>Список сотрудников</v-subheader>
+              <create-employee></create-employee>
+              <employee-tile
+                v-for="profile in profiles"
+                :key="profile.name"
+                :profile="profile"
+              ></employee-tile>
+            </v-list>
+          </v-card>
+        </v-layout>
+      </v-container>
+    </v-flex>
+    <v-flex v-show="showDetailEmployee" sm12 md6>
+      <v-container fluid fill-height class="container-mobile-flat">
+        <v-layout fill-height>
+          <nuxt-child :key="$route.params.id" class="container-max-width" />
+        </v-layout>
+      </v-container>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+  import EmployeeTile from '~/components/employees/employee-tile'
+  import CreateEmployee from '~/components/employees/create-employee'
+
   export default {
-    layout: 'double-pane',
+    name: 'employees',
+    components: {
+      EmployeeTile,
+      CreateEmployee
+    },
     computed: {
-      profiles: []
+      profiles () {
+        return this.employees
+      },
+      showEmployeesList () {
+        return this.$route.name === 'employees' || this.$vuetify.breakpoint.mdAndUp
+      },
+      showDetailEmployee () {
+        return this.$route.name !== 'employees' || this.$vuetify.breakpoint.mdAndUp
+      },
+      ...mapState({
+        employees: state => state.employees.list
+      })
     }
   }
 </script>
+
+<style scoped>
+
+</style>

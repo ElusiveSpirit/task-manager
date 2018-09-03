@@ -29,6 +29,9 @@ module.exports = {
   css: [
     '~/assets/style/app.styl'
   ],
+  modules: [
+    '@nuxtjs/axios'
+  ],
   /*
   ** Customize the progress bar color
   */

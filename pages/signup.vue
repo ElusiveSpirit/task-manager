@@ -3,7 +3,7 @@
     <v-flex xs12 sm8 md6 lg4 xl3>
       <v-card class="elevation-12">
         <v-toolbar dark color="primary">
-          <v-toolbar-title>Login form</v-toolbar-title>
+          <v-toolbar-title>Signup form</v-toolbar-title>
           <v-tooltip right>
             <v-btn slot="activator" icon large href="https://codepen.io/johnjleider/pen/wyYVVj" target="_blank">
               <v-icon large>mdi-codepen</v-icon>

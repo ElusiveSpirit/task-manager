@@ -1,3 +1,5 @@
+export const BASE_URL = 'http://192.168.1.187:8800/api/'
+
 export const state = () => ({
   sidebar: true,
   miniVariant: false
