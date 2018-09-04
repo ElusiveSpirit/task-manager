@@ -14,12 +14,24 @@
     <v-form>
       <v-container v-if="Object.keys(employee).length > 0">
         <v-layout column>
+          <img v-if="employee.avatar" :src="employee.avatar" class="employee-avatar">
+          <img v-else src="~/assets/images/no-avatar.png" class="employee-avatar">
           <v-text-field
             label="Имя, Фамилия"
             :value="employee.name"
             single-line
             hide-details
             class="headline"
+          ></v-text-field>
+          <v-text-field
+            label="Email"
+            :value="employee.email"
+            single-line
+          ></v-text-field>
+          <v-text-field
+            label="Роль"
+            :value="employee.role"
+            single-line
           ></v-text-field>
           <v-text-field
             label="Должность"
@@ -108,7 +120,7 @@
 </script>
 
 <style lang="sass" scoped>
-  .task-metrics
-    .flex
-      margin: 10px 0
+  .employee-avatar
+    height: 100px
+    width: 100px
 </style>
