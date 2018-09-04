@@ -28,6 +28,7 @@ export const actions = {
       username: email,
       password: password
     })
+    // let data = { refresh: 'erferrgt', access: 'regrtgrt', id: 'egerger' }
     if (data) {
       let tokenData = JSON.parse(atob(data.refresh.split('.')[1]))
       data.email = email

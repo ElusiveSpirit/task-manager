@@ -14,6 +14,7 @@
     <v-form>
       <v-container v-if="Object.keys(employee).length > 0">
         <v-layout column>
+          <croppa v-model="myCroppa"></croppa>
           <v-text-field
             label="Имя, Фамилия"
             :value="employee.name"
@@ -21,6 +22,16 @@
             hide-details
             class="headline"
           ></v-text-field>
+          <v-text-field
+            label="Email"
+            :value="employee.email"
+            single-line
+          ></v-text-field>
+          <v-select
+            :value="employee.role"
+            :items="roles"
+            label="Роль"
+          ></v-select>
           <v-text-field
             label="Должность"
             :value="employee.post"
@@ -59,6 +70,7 @@
 </template>
 
 <script>
+  import { ROLES } from '~/store/employees'
   import { mapState, mapActions } from 'vuex'
   import EmployeeTasks from '~/components/employees/employee-tasks'
 
@@ -67,10 +79,12 @@
       EmployeeTasks
     },
     data: () => ({
+      roles: ROLES,
       employee: {},
       selected: '',
       autoUpdate: true,
-      isUpdating: false
+      isUpdating: false,
+      myCroppa: {}
     }),
     computed: {
       description: {
@@ -94,6 +108,11 @@
       }
     },
     methods: {
+      uploadCroppedImage () {
+        this.myCroppa.generateBlob((blob) => {
+          // write code to upload the cropped image file (a file is a blob)
+        }, 'image/jpeg', 0.8) // 80% compressed jpeg file
+      },
       ...mapActions({
         fetchEmployee: 'employees/fetchEmployee'
       })

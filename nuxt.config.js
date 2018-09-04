@@ -24,7 +24,8 @@ module.exports = {
     '~/plugins/vue-shared-mutations.js',
     '~/plugins/vue-moment.js',
     '~/plugins/vue-quill.js',
-    '~/plugins/vuex-orm.js'
+    '~/plugins/vuex-orm.js',
+    '~/plugins/vue-croppa.js'
   ],
   css: [
     '~/assets/style/app.styl'

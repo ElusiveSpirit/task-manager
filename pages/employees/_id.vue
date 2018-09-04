@@ -28,11 +28,11 @@
             :value="employee.email"
             single-line
           ></v-text-field>
-          <v-text-field
-            label="Роль"
+          <v-select
             :value="employee.role"
-            single-line
-          ></v-text-field>
+            :items="roles"
+            label="Роль"
+          ></v-select>
           <v-text-field
             label="Должность"
             :value="employee.post"
@@ -72,6 +72,7 @@
 
 <script>
   import { mapActions } from 'vuex'
+  import { ROLES } from '~/store/employees'
   import UserInput from '~/components/inputs/user-input'
   import EmployeeTasks from '~/components/employees/employee-tasks'
 
@@ -81,6 +82,7 @@
       EmployeeTasks
     },
     data: () => ({
+      roles: ROLES,
       employee: {},
       selected: '',
       autoUpdate: true,

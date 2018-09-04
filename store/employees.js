@@ -1,31 +1,37 @@
+export const ROLES = [
+  'Администратор',
+  'Пользователь',
+  'Гость'
+]
+
 export const state = () => ({
   list: [
     {
       id: 1,
       name: 'Jason Oner',
       email: 'jason.oner@mail.com',
-      role: 'Разработчик',
+      role: 'Администратор',
       avatar: ''
     },
     {
       id: 2,
       name: 'Ranee Carlson',
       email: 'ranee.carlson@mail.com',
-      role: 'Стажер',
+      role: 'Пользователь',
       avatar: ''
     },
     {
       id: 3,
       name: 'Cindy Baker',
       email: 'cindy.baker@mail.com',
-      role: 'Стажер',
+      role: 'Пользователь',
       avatar: ''
     },
     {
       id: 4,
       name: 'Ali Connors',
       email: 'ali.connors@mail.com',
-      role: 'Разработчик',
+      role: 'Гость',
       avatar: ''
     }
   ]

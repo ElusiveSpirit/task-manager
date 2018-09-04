@@ -31,20 +31,20 @@
         return [
           {
             title: 'Задача 1',
-            dateStart: '4-09-2018',
-            dateEnd: '10-09-2018',
+            dateStart: '4.09.2018',
+            dateEnd: '10.09.2018',
             status: 'bad'
           },
           {
             title: 'Задача 2',
-            dateStart: '4-09-2018',
-            dateEnd: '10-09-2018',
+            dateStart: '4.09.2018',
+            dateEnd: '10.09.2018',
             status: 'good'
           },
           {
             title: 'Задача 3',
-            dateStart: '4-09-2018',
-            dateEnd: '10-09-2018',
+            dateStart: '4.09.2018',
+            dateEnd: '10.09.2018',
             status: 'ok'
           }
         ]
