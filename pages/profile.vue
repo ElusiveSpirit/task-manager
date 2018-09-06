@@ -37,6 +37,34 @@
             :value="employee.post"
             single-line
           ></v-text-field>
+
+          <v-text-field
+            label="Старый пароль"
+            v-model="oldPassword"
+            type="password"
+            single-line
+          ></v-text-field>
+          <v-text-field
+            label="Новый пароль"
+            v-model="newPassword"
+            type="password"
+            single-line
+          ></v-text-field>
+          <v-text-field
+            label="Повторите новый пароль"
+            v-model="repeatNewPassword"
+            type="password"
+            single-line
+          ></v-text-field>
+          <v-btn
+            class="change-password-btn"
+            :disabled="!checkMatchPassword"
+            color="grey lighten-3"
+            depressed
+            @click="changePassword"
+          >
+            Изменить пароль
+          </v-btn>
           <v-flex>
             <h3 class="title">Задачи</h3>
             <employee-tasks></employee-tasks>
@@ -84,16 +112,14 @@
       selected: '',
       autoUpdate: true,
       isUpdating: false,
-      myCroppa: {}
+      myCroppa: {},
+      oldPassword: '',
+      newPassword: '',
+      repeatNewPassword: ''
     }),
     computed: {
-      description: {
-        get () {
-          return this.employee.description
-        },
-        set (v) {
-          console.log(v)
-        }
+      checkMatchPassword () {
+        return this.newPassword === this.repeatNewPassword
       },
       ...mapState({
         email: state => state.user.email
@@ -112,6 +138,9 @@
         this.myCroppa.generateBlob((blob) => {
           // write code to upload the cropped image file (a file is a blob)
         }, 'image/jpeg', 0.8) // 80% compressed jpeg file
+      },
+      changePassword () {
+        console.log('Пароль изменен')
       },
       ...mapActions({
         fetchEmployee: 'employees/fetchEmployee'
@@ -132,4 +161,7 @@
     width: 80%
     margin: auto
     margin-top: 40px
+    .change-password-btn
+      width: 200px
+      margin: auto
 </style>
